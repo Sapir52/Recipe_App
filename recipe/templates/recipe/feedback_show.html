@@ -1,0 +1,30 @@
+{% extends 'recipe/recipe-base.html' %}
+{% block recipes_active %}active{% endblock %}
+{% block body %}
+<div class="books-container container-fluid">
+	<!-- Recipe -->
+	<div class="row">
+		{% for feedback in all_feedbacks %}
+				<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+				<h3 style="text; color :gray">User Name:</h3>
+				<h4>{{ feedback.user_name }}</h4>
+				
+				<h3 style="text; color :gray">User Email:</h3>
+				<h4>{{ feedback.email }}</h4>
+				
+				<h3 style="text; color :gray">Date Published:</h3>
+				<h4>{{ feedback.date }}</h4>
+				
+				<h3 style="text; color :gray">Book Name:</h3>
+				<h4>{{ feedback.book }}</h4>
+				
+				<h3 style="text; color :gray">Recipe Name:</h3>
+				<h4>{{ feedback.recipe }}</h4>
+				
+				<h3 style="text; color :gray">Comment:</h3>
+				<h4>{{ feedback.details }}</h4>
+				
+		{% endfor %}
+	<div>
+</div>
+{% endblock %}

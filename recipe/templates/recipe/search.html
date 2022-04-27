@@ -1,0 +1,71 @@
+{% extends 'recipe/base.html' %}
+{% block songs_active %}active{% endblock %}
+
+{% block body %}
+<div class="books-container container-fluid">
+
+	<div class="row">
+
+		<div class="col-sm-12">
+			<h3>Search for: {{ request.GET.q }}</h3>
+		</div>
+
+		<div class="col-sm-8 col-md-9">
+
+
+			{% if results %}
+					{% for recipe in results %}
+					<tr>
+						<td>
+							<center>
+								<h2 style="color :gray;">Book Title: {{ recipe.book.book_title }}</h2>
+								
+								<td style="img-align:center">
+									{% if recipe.book.book_logo %}
+										<img src="{{ recipe.book.book_logo }}"  style="width: 250px;">
+									{% else %}
+										No image to display.
+									{% endif %}
+								</td>
+								<h3>Book Artist:{{ recipe.book.artist }}<br>
+								Book Genere:{{ recipe.book.genre }}</h3>
+							</center>
+
+						</td>
+						
+						<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+						<td>
+							<h2 style="text-align:center; color :gray">Recipe Title: {{ recipe.recipe_title }}</h2>
+							
+							<td>
+								{% if recipe.recipe_logo %}
+									<img src="{{ recipe.recipe_logo }}"  style="width: 250px;">
+								{% else %}
+									No image to display.
+								{% endif %}
+							</td>
+							<h3 style="color :gray;">Ingredient Recipe:<br></h3> 
+							<h3>{{ recipe.ingredient_recipe }}</h3>
+							<br><br>
+							<h3 style="color :gray;">Recipe Description:<br></h3>  
+							<h3>{{ recipe.recipe_description }}</h3>
+						</td>
+
+					</tr>
+					{% endfor %}
+
+
+			{% else %}
+			<p>No results were found.</p>
+			
+			{% endif %}
+
+
+		</div>
+
+	</div>
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'recipe/base.html' %}
+{% block title %}Book details{% endblock %}
+{% block body %}
+	
+	<img src= "{{ book.book_logo }}" style="width: 250px;">
+	
+	<h1>{{ book.book_title }}</h1>
+	<h3>{{ book.artist }}</h3>
+	<h4>{{ book.genre }}</h4>
+	
+	
+	
+	{% for recipe in book.recipe_set.all %}
+		{{ recipe.recipe_title }}
+		{% if recipe.is_favorite %}
+			<img src="http://i.imgur.com/b9b13Rd.png" />
+		{% endif %}
+		<br>
+	{% endfor %}
+
+{% endblock %}

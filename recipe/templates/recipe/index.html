@@ -1,0 +1,45 @@
+{% extends 'recipe/base.html' %}
+
+{% block body %}
+
+	<div class= "row">
+		{% for book in all_books %}
+			<div class="col-sm-4 col-lg-2">
+				<div class="thumbnail">
+					<!-- Book logo -->
+					<a href="{% url 'recipe:detail' book.id %}">
+						<img src="{{ book.book_logo }}" class="img-responsive">
+					</a>
+					<div class="caption">
+						
+						<h4>{{ book.book_title }}</h4>
+						<h5>{{ book.artist }}</h5>
+						<!-- Details -->
+						<a href="{% url 'recipe:detail' book.id %}" class="btn btn-primary btn-sm">View Details</a>
+						
+						<!-- Delete -->
+						<form action="{% url 'recipe:book-delete' book.id %}" method="post" style="display: inline;">
+							{% csrf_token %}
+							<input type="hidden" name="book_id" value="{{ book.id }}"/>
+							<button type="submit" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-floppy-remove"></span>
+							</button>
+						</form>
+						<!-- Update -->
+						<form action="{% url 'recipe:book-update' book.id %}" method="post" style="display: inline;">
+							{% csrf_token %}
+							<input type="hidden" name="book_id" value="{{ book.id }}"/>
+							<button type="submit" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-floppy-saved"></span>
+							</button>
+						</form>
+
+
+					</div>
+				</div>				
+			</div>
+
+		{% endfor %}
+	</div>
+
+{% endblock %}
