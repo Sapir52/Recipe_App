@@ -6,7 +6,7 @@ The app's name is Recipe4U, developed in django language.
 
 Recipe4U allows users to learn recipes from different cultures and add their own recipes.
 
-Recipe4U contains two types of users: registered and unregisteredת each user has their own permissions.
+Recipe4U contains two types of users: registered and unregistered, each user has their own permissions.
 
 The app allows:
 - Registration, login, update and deletion of users.
